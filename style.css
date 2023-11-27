@@ -1,0 +1,656 @@
+::-webkit-scrollbar {
+    width: 0.2vw;
+}
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: var(--fontxsmall);
+    background: rgba(255, 255, 255, 0.50);
+}
+:root{
+    --fontxsmall: 0.73vw;
+    --fontsmall: 0.83vw;
+    --fontmedium: 1vw;
+    --fontlarge: 1.2vw;
+    --fontxl: 1.4vw;
+    --padlittle: clamp(5px, 0.5vw, 25px);
+    --padmedium: clamp(10px, 0.7vw, 30px);
+    --padlarge: clamp(15px, 1vw, 100px);
+    --padlarger: clamp(20px, 1.2vw, 150px);
+    --gap: clamp(0.7rem, 0.8vw, 2rem);
+    --gaplarge: clamp(1rem, 1vw, 4rem);
+    --radius: clamp(12px, 0.8vw, 30px);
+}
+button{
+    border: none;
+    color: inherit;
+}
+.flexsmall{
+    display: flex;
+    gap: var(--gap);
+    align-items: center;
+}
+.flexlittle{
+    display: flex;
+    gap: calc(0.5 * var(--gap));
+    align-items: center;
+}
+.hide{
+    opacity: 0;
+    pointer-events: none;
+}
+.hide-display{
+    opacity: 0;
+    position: absolute;
+    pointer-events: none;
+    transform: translateY(-5vh);
+}
+.hide-header{
+    opacity: 0;
+    position: absolute;
+    pointer-events: none;
+    transform: translate(-50%,-5vh);
+}
+.hide-slide{
+    opacity: 0;
+    position: absolute;
+    pointer-events: none;
+    transform: translateX(5%);
+}
+*{
+    padding: 0;
+    margin: 0;
+    line-height: normal;
+    -webkit-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
+    font-family: 'Outfit', sans-serif;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    font-style: normal;
+}
+body{
+    background: url(images/background.png);
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+.display{
+    width: 100vw;
+    height: 100vh;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 1.85vh;
+}
+.vignette{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: -2;
+}
+.glow-bottom-right{
+    position: absolute;
+    z-index: -1;
+    right: 0;
+    bottom: 0;
+    height: 70vh;
+}
+.glow-top-left{
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    top: 0;
+    height: 70vh;
+}
+.container{
+    border-radius: 20px;
+    border: 0.185vh solid rgba(166, 255, 239, 0.34);
+    width: 100%;
+    height: 100%;
+    padding:5vh 7.6vh ;
+    position: relative;
+}
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+header img{
+    width: 2.9vw;
+    height: 2.9vw;
+}
+header p{
+    color: rgba(255, 255, 255, 0.65);
+    font-size: var(--fontxsmall);
+    font-weight: 500;
+    letter-spacing: 0.7px;
+}
+header h4{
+    color: #FFF;
+    font-size: var(--fontmedium);
+    font-weight: 700;
+    letter-spacing: 2.4px;
+}
+header div div:has(.wallet-balance) svg{
+    height: 1.6vh;
+    aspect-ratio: 21/18;
+}
+header .flexsmall{
+    gap: 2.29vw;
+}
+.header-icons {
+    gap: 0.277vh;
+    border-radius: 0.5vw;
+    overflow: hidden;
+}
+.header-icons div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--fontsmall);
+    background: rgba(255, 255, 255, 0.10);
+    cursor: pointer;
+    position: relative;
+}
+.header-icons div:hover{
+    background: rgba(255, 255, 255, 0.20);
+}
+.header-icons svg{
+    width: 2.222vh;
+    height: 2.222vh;
+}
+header div:has(h2){
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+header div:has(h2) h2{
+    text-shadow: 0px 0px 88px rgba(255, 255, 255, 0.15);
+    font-size: 2vw;
+    font-weight: 700;
+    line-height: 103%; /* 41.2px */
+    letter-spacing: 4.8px;
+    position: relative;
+}
+header h1{
+    color: rgba(255, 255, 255, 0.40);
+    font-size: var(--fontxl);
+    font-weight: 700;
+    letter-spacing: 2.24px;
+}
+header h1 span{
+    color: white;
+}
+.current-page-info{
+    display: flex;
+    align-items: center;
+    gap: 1.2vw;
+}
+.current-page-info div{
+    border-radius: var(--fontsmall);
+    background: rgba(255, 255, 255, 0.12);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.5vw;
+    height: 2.5vw;
+    cursor: pointer;
+}
+.current-page-info svg{
+    width: 0.5vw;
+    aspect-ratio: 10/16;
+}
+.insurance-text{
+    width: 23.59vw;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+}
+.function-btns{
+    display: flex;
+    position: absolute;
+    bottom: 2.47vw;
+    right: 2.47vw;
+    gap: 1.5625vw;
+    z-index: 7;
+}
+.function-btns p{
+    color: rgba(255, 255, 255, 0.50);
+    font-size: var(--fontmedium);
+    font-weight: 600;
+}
+.function-btns span{
+    color: #292929;
+    font-size: var(--fontxsmall);
+    font-weight: 800;
+    height: 1.97vw;
+    width: 1.97vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 0.5vw;
+}
+.function-btns .flexsmall div{
+    border-radius: var(--fontxsmall);
+    border: 0.1vw solid rgba(255, 255, 255, 0.25);
+    padding: 0.2vw;
+    opacity: .25;
+    cursor: pointer;
+}
+.function-btns .flexsmall div:hover{
+    opacity: 1;
+}
+/* .function-btns .flexsmall div:active{
+    opacity: 1;
+} */
+.line-dots{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    margin-top: 1.3vw;
+}
+.line-dots div{
+    width: 0.15625vw;
+    height: 0.15625vw;
+    background: rgba(255, 255, 255, 0.50);
+}
+.line-dots p{
+    background: rgba(255, 255, 255, 0.15);
+    flex: 1;
+    height: 1px;
+}
+main{
+    position: relative;
+}
+.vehicles-list{
+    width: max-content;
+    margin-top: 5.27vh;
+}
+.vehicles-list h3{
+    font-size: 1.45vw;
+    font-weight: 700;
+    letter-spacing: 2.24px;
+    margin-bottom: 2.5vh;
+}
+.vehicles{
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    height: 67vh;
+    overflow-y: scroll;
+    padding-right: 1.4vw;
+}
+.vehicle{
+    padding: 1.67vh 1.61vw;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 0.9375vw;
+    cursor: pointer;
+    position: relative;
+}
+.vehicle svg{
+    width: 1vw;
+    height: 1vw;
+}
+.vehicle img{
+    height: 11.3vh;
+    aspect-ratio: 263/122;
+    object-fit: contain;
+}
+.vehicle p{
+    font-size: var(--fontxsmall);
+    font-weight: 600;
+    letter-spacing: 1.96px;
+    text-transform: uppercase;
+}
+.insured{
+    color: #00D9B2;
+    background: rgba(255, 255, 255, 0.03);
+}
+.insured.active{
+    border: 0.1vw solid #00D9B2;
+    background: rgba(0, 62, 51, 0.30);
+}
+.uninsured{
+    color: #E86B61;
+    background: rgba(232, 107, 97, 0.05);
+    border: 1px solid rgba(232, 107, 97, 0.15);
+}
+.uninsured.active{
+    border: 0.1vw solid #E86B61;
+    background: rgba(98, 7, 0, 0.30);
+}
+.insurance-details{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+}
+.insurance-details svg{
+    width: 1.56vw;
+    height: 1.56vw;
+}
+.insurance-details section{
+    display: flex;
+    align-items: center;
+    gap: var(--fontsmall);
+    font-size: var(--fontxsmall);
+    font-weight: 600;
+}
+.insurance-details span{
+    display: block;
+    height: 1.56vw;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.15);
+}
+.insurance-details h4{
+    color: rgba(255, 255, 255, 0.50);
+    text-shadow: 0px 0px 9.897849082946777px rgba(0, 0, 0, 0.50);
+    letter-spacing: 1.68px;
+}
+.insurance-details p{
+    letter-spacing: 1.4px;
+}
+.vehicle-name, .notifications, .claim-alert{
+    width: 18.7vw;
+    text-align: right;
+    font-size: 1.875vw;
+    font-weight: 700;
+    letter-spacing: 4.32px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.vehicle-name{
+    text-transform: uppercase;
+}
+.notifications{
+    display: flex;
+    flex-direction: column;
+    gap: var(--fontxsmall);
+    height: 65vh;
+    overflow-y: scroll;
+}
+.notifications::-webkit-scrollbar {
+    width: 0;
+}
+.notification{
+    text-align: left;
+    width: 18.2vw;
+    padding: var(--fontsmall);
+    border-radius: 0.9375vw;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: url(images/bg-car.svg) right no-repeat,  rgba(16, 16, 16, 0.70);
+    background-size: contain;
+}
+.notification .header{
+    color: #898989;
+    font-size: 0.67vw;
+    font-weight: 700;
+    letter-spacing: 1.56px;
+    text-transform: uppercase;
+}
+.header{
+    margin-bottom: 0.5vw;
+}
+.notification p{
+    color: #B3B3B3;
+    font-size: var(--fontsmall);
+    font-weight: 400;
+    line-height: 110%;
+    letter-spacing: 0.32px;
+}
+.notification p span{
+    color: #FFF;
+    text-transform: capitalize;
+}
+.notification h4{
+    color: #898989;
+}
+.vehicle-name b{
+    color: #41CCB1;
+    font-weight: 400;
+}
+.red{
+    color: rgba(232, 107, 97, 0.80) !important;
+}
+.insurance-btns{
+    position: absolute;
+    bottom: 0;
+    left: 42%;
+    display: flex;
+    align-items: center;
+    gap: 1.5vw;
+}
+.lix{
+    width: 1.1vw;
+    aspect-ratio: 21/18;
+}
+.insurance-btns .btn{
+    font-size: 0.9375vw;
+    font-weight: 700;
+    letter-spacing: 2.16px;
+    text-transform: uppercase;
+    color: #000;
+    justify-content: center;
+    padding: var(--fontsmall) 1vw;
+    border-radius: var(--fontsmall);
+    cursor: pointer;
+}
+.insurance-btns .btn svg{
+    width: var(--fontlarge);
+    aspect-ratio: 1/1;
+}
+.amount{
+    font-size: var(--fontmedium);
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 2.4px;
+    text-transform: uppercase;
+}
+.get-insurance{
+    background: #D5A730;
+}
+.get-insurance:hover{
+    background: #FFC93E;
+}
+.cancel-insurance{
+    background: #D13E3E;
+}
+.cancel-insurance:hover{
+    background: #FF4242;
+}
+.claim-insurance{
+    background: #1EA089;
+    padding: var(--fontsmall) 2.5vw !important;
+}
+.claim-insurance:hover, .notification-claim-btns .claim:hover{
+    background: #2FC0A7;
+}
+.insurance-btns:has(.claim-insurance){
+    left: 50%;
+    transform: translateX(-50%);
+}
+.lix-amount p{
+    color: #6E6E6E;
+    font-size: 0.9375vw;
+    font-weight: 500;
+    letter-spacing: 2.16px;
+}
+.active-red{
+    position: absolute;
+    top: -0.3vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2.23vw !important;
+    aspect-ratio: 44/16;
+}
+.icon-active{
+    background: rgba(0, 217, 178, 0.15) !important;
+}
+.icon-active .svg path{
+    fill: #00D9B2;
+}
+.destroyed-icon{
+    top: 1.67vh;
+    right: 1.61vh;
+    position: absolute;
+}
+.destroyed{
+    background: rgba(255, 255, 255, 0.03);
+}
+.destroyed.active{
+    border: 0.1vw solid #D9D9D9;
+    background: rgba(0, 62, 51, 0.30);
+}
+.pop-up{
+    background: url(images/red-gradient.png);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+}
+.pop-up section, .blur{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.blur{
+    width: 52vh;
+    aspect-ratio: 1/1;
+    z-index: -1;
+}
+.blur img{
+    width: 100%;
+    height: 100%;
+}
+.icon{
+    width: 2.8125vw;
+    height: 2.8125vw;
+}
+.pop-up h3{
+    font-size: 1.875vw;
+    font-weight: 700;
+    letter-spacing: 4.32px;
+    text-transform: uppercase;
+    margin-top: 2.3vh;
+    margin-bottom: 4.6vh;
+}
+.pop-up h3 span{
+    color: #41CCB1;
+    font-weight: 400;
+}
+.pop-up h4{
+    color: rgba(255, 255, 255, 0.45);
+    font-size: var(--fontmedium);
+    font-weight: 500;
+    letter-spacing: 0.9px;
+}
+.pop-up p{
+    font-size: 0.9375vw;
+    font-weight: 500;
+    letter-spacing: 0.9px;
+    margin-bottom: 3vh;
+}
+.pop-up p span{
+    font-size: 1vw;
+    font-weight: 700;
+    letter-spacing: 2.4px;
+}
+.pop-up button{
+    color: rgba(255, 255, 255, 0.75);
+    font-size: var(--fontsmall);
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    cursor: pointer;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+}
+.cancel{
+    width: 7.291vw;
+    aspect-ratio: 140/60;
+    background: url(images/cancel.svg);
+    margin-right: 0.5vw;
+}
+.cancel:hover{
+    background: url(images/cancel-hover.svg);
+}
+.confirm, .confirm-green{
+    width: 8.8vw;
+    aspect-ratio: 169/60;
+    background: url(images/confirm.svg);
+}
+.confirm:hover{
+    background: url(images/confirm-red-hover.svg);
+}
+.confirm-green{
+    background: url(images/confirm-green.svg);
+}
+.confirm-green:hover{
+    background: url(images/confirm-green-hover.svg);
+}
+.claim-info{
+    color: #898989;
+    font-size: 1vw;
+    font-weight: 400;
+    letter-spacing: 0.8px;
+}
+.claim-info svg, .notification svg{
+    width: var(--fontlarge);
+    height: var(--fontlarge);
+}
+.notification-claim-btns{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.625vw;
+}
+.notification-claim-btns button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--fontsmall);
+    padding: 1vh 0;
+    font-size: var(--fontxsmall);
+    font-weight: 700;
+    letter-spacing: 1.68px;
+    cursor: pointer;
+    margin-top: var(--fontxsmall);
+}
+.notification-claim-btns .claim{
+    background: #1EA089;
+    color: black;
+}
+.notification-claim-btns .location{
+    border: 0.1vw solid #1EA089;
+    background: transparent;
+    color: #00CBA7;
+}
+.notification-claim-btns .location:hover{
+    border: 0.1vw solid #3AF0D1;
+    background: rgba(47, 192, 167, 0.10);
+}
+.notification .lix-amount{
+    margin-top: var(--fontxsmall);
+}
+.notification .amount, .notification .lix-amount p{
+    font-size: var(--fontsmall) !important;
+}
