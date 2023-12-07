@@ -277,6 +277,7 @@ main{
 .vehicles-list{
     width: max-content;
     margin-top: 5.27vh;
+    height: 73.6vh;
 }
 .vehicles-list h3{
     font-size: 1.45vw;
@@ -288,8 +289,8 @@ main{
     display: flex;
     flex-direction: column;
     gap: 1vw;
-    height: 67vh;
-    overflow-y: scroll;
+    max-height: 67vh;
+    overflow-y: auto;
     padding-right: 1.4vw;
 }
 .vehicle{
@@ -365,7 +366,7 @@ main{
 .insurance-details p{
     letter-spacing: 1.4px;
 }
-.vehicle-name, .notifications, .claim-alert{
+.vehicle-name, .notifications-content, .claim-alert{
     width: 18.7vw;
     text-align: right;
     font-size: 1.875vw;
@@ -377,6 +378,15 @@ main{
 }
 .vehicle-name{
     text-transform: uppercase;
+}
+.notifications-content{
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+    gap: var(--fontxsmall);
+    height: 67vh;
+    overflow-y: hidden;
+    padding-bottom: 10px;
 }
 .notifications{
     display: flex;
@@ -535,7 +545,7 @@ main{
     text-align: center;
 }
 .blur{
-    width: 52vh;
+    width: 100vh;
     aspect-ratio: 1/1;
     z-index: -1;
 }
@@ -564,6 +574,7 @@ main{
     font-size: var(--fontmedium);
     font-weight: 500;
     letter-spacing: 0.9px;
+    margin-top: var(--fontxsmall);
 }
 .pop-up p{
     font-size: 0.9375vw;

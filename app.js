@@ -319,7 +319,7 @@ document.querySelector('.destroyed-vehicles-tab').addEventListener('click', () =
     document.querySelector('.destroyed-vehicles-tab svg').classList.remove('hide');
     document.querySelector('.destroyed-vehicles-tab').classList.add('icon-active');
     document.querySelector('.vehicle-name').classList.remove('hide-slide');
-    document.querySelector('.notifications').classList.add('hide-slide');
+    document.querySelector('.notifications-content').classList.add('hide-slide');
     document.querySelector('.vehicles-total').classList.add('hide-display');
     document.querySelector('.insurance-header').classList.add('hide-header');
     document.querySelector('.current-page-info').classList.remove('hide-display');
@@ -394,7 +394,7 @@ const claim = () => {
             return {...veh}
         }
     })
-    document.querySelector('.notifications').classList.add('hide-slide');
+    document.querySelector('.notifications-content').classList.add('hide-slide');
     document.querySelector('.vehicle-name').classList.add('hide-slide');
     document.querySelector('.claim-alert').classList.remove('hide-slide');
     destroyedVehicles = vehicles.filter((veh) => veh.destroyed === true);
@@ -405,7 +405,7 @@ const claim = () => {
         document.querySelector('.claim-alert').classList.add('hide-slide');
         if(document.querySelector('.notification-icon').classList.contains('icon-active')){
             document.querySelector('.vehicle-name').classList.add('hide-slide');
-            document.querySelector('.notifications').classList.remove('hide-slide');
+            document.querySelector('.notifications-content').classList.remove('hide-slide');
         }
     }, 3000);
 }
@@ -416,7 +416,7 @@ const closeTransaction = () => {
 }
 const pushNotifications = () => {
     document.querySelector('.vehicle-name').classList.toggle('hide-slide');
-    document.querySelector('.notifications').classList.toggle('hide-slide');
+    document.querySelector('.notifications-content').classList.toggle('hide-slide');
     document.querySelector('.destroyed-vehicles-tab svg').classList.add('hide');
     document.querySelector('.destroyed-vehicles-tab').classList.remove('icon-active');
     document.querySelector('.notification-icon svg').classList.toggle('hide');
